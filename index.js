@@ -23,7 +23,7 @@ function extractResults(item, index) {
 }
 
 function handleGetUser() {
-    log('localStorage', app.localStorage)
+    log('localStorage', window.localStorage)
     window.localStorage.forEach(extractResults)
 }
 
