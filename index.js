@@ -18,13 +18,13 @@ app.onReady().then(() => {
 
 function extractResults(item, index) {
 
-    var vote = app.localStorage.getItem(item)
+    var vote = window.localStorage.getItem(item)
     log('vote' + index + ':',  vote);
 }
 
 function handleGetUser() {
     log('localStorage', app.localStorage)
-    app.localStorage.forEach(extractResults)
+    window.localStorage.forEach(extractResults)
 }
 
 
@@ -32,7 +32,7 @@ function handleCreateResults() {
 
     for (let i = 0; i < 5; i++) {
 
-        app.localStorage.setItem(''+i, ''+5);
+        window.localStorage.setItem(''+i, ''+5);
         log('Set Value:' + i);
     }
 }
