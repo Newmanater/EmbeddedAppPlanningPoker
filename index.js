@@ -16,9 +16,27 @@ app.onReady().then(() => {
     })
 });
 
+
+function getInputValue() {
+    let myValue = document.getElementById("userField").value;
+    return myValue;
+}
+
+function getUserVaule(keyName){
+    const myStorage = window.sessionStorage.getItem(keyName);
+    return myStorage;
+}
+
+function setUserVaule(key, value){
+    window.sessionStorage.setItem(key,value);
+}
+
 function handleGetUser() {
     app.context.getUser().then((u) => {
         log('getUser()', u);
+        setUserVaule(u, getInputValue())
+
+        log('getUser()', window.setSessionStorage.getAllKeys());
     }).catch((error) => {
         log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
     })
