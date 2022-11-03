@@ -40,8 +40,7 @@ function handleGetUser() {
         setUserVaule(u.id, input)
         log('setVaule', u.id, input);
 
-
-        log('getValue()',  window.getSessionStorage(u.id));
+        log('getValue()',  window.sessionStorage);
     }).catch((error) => {
         log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
     })
