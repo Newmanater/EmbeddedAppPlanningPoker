@@ -23,12 +23,12 @@ function getInputValue() {
 }
 
 function getUserVaule(keyName){
-    const myStorage = window.sessionStorage.getItem(keyName);
+    const myStorage = window.localStorage.getItem(keyName);
     return myStorage;
 }
 
 function setUserVaule(key, value){
-    window.sessionStorage.setItem(key,value);
+    window.localStorage.setItem(key,value);
 }
 
 function handleGetUser() {
@@ -38,9 +38,9 @@ function handleGetUser() {
 
         var input = getInputValue();
         setUserVaule(u.id, input)
-        log('setVaule', u.id, input);
+        log('setValue', u.id, input);
 
-        log('getValue()',  window.sessionStorage);
+        log('getValue()',  window.localStorage);
     }).catch((error) => {
         log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
     })
