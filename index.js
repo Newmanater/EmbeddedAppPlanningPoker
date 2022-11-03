@@ -23,10 +23,19 @@ function extractResults(item, index) {
 }
 
 function handleGetUser() {
-
+    log('localStorage', app.localStorage)
     app.localStorage.forEach(extractResults)
 }
 
+
+function handleCreateResults() {
+
+    for (let i = 0; i < 5; i++) {
+
+        app.localStorage.setItem(''+i, ''+5);
+        log('Set Value:' + i);
+    }
+}
 
 function handleSetShare() {
     if (app.isShared) {
