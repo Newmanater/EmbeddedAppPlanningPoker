@@ -16,15 +16,44 @@ app.onReady().then(() => {
     })
 });
 
+function getInputValue() {
+    let myValue = document.getElementById("userField").value;
+    return myValue;
+}
+
+function getUserVaule(keyName){
+    const myStorage = window.localStorage.getItem(keyName);
+    return myStorage;
+}
+
+function setUserVaule(key, value){
+    window.localStorage.setItem(key,value);
+}
+
+function handleGetUser() {
+    app.context.getUser().then((u) => {
+        log('getUser()', u);
+
+        var input = getInputValue();
+        setUserVaule(u.id, input)
+
+        log('localStorage', window.localStorage)
+
+    }).catch((error) => {
+        log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
+    })
+}
+
+
 function extractResults(item, index) {
 
-    var vote = app.localStorage.getItem(item)
+    var vote = window.localStorage.getItem(item)
     log('vote' + index + ':',  vote);
 }
 
 function handleGetUser() {
-    log('localStorage', app.localStorage)
-    app.localStorage.forEach(extractResults)
+    log('localStorage', window.localStorage)
+    window.localStorage.forEach(extractResults)
 }
 
 
@@ -32,11 +61,11 @@ function handleCreateResults() {
 
     log('called create')
 
-    app.localStorage.setItem('a', '5');
-    app.localStorage.setItem('b', '10');
-    app.localStorage.setItem('c', '15');
-    app.localStorage.setItem('d', '35');
-    app.localStorage.setItem('e', '25');
+    window.localStorage.setItem('a', '5');
+    // window.localStorage.setItem('b', '10');
+    // window.localStorage.setItem('c', '15');
+    // window.localStorage.setItem('d', '35');
+    // window.localStorage.setItem('e', '25');
 }
 
 function handleSetShare() {
