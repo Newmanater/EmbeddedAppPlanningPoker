@@ -34,9 +34,14 @@ function setUserVaule(key, value){
 function handleGetUser() {
     app.context.getUser().then((u) => {
         log('getUser()', u);
-        setUserVaule(u, getInputValue())
 
-        log('getUser()', window.setSessionStorage.getAllKeys());
+
+        var input = getInputValue();
+        setUserVaule(u.id, input)
+        log('setVaule', u.id, input);
+
+
+        log('getAllKeys()',  window.setSessionStorage.getAllKeys().id);
     }).catch((error) => {
         log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
     })
