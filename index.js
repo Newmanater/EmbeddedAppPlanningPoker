@@ -30,6 +30,7 @@ function handleGetUser() {
 
 function handleCreateResults() {
 
+    log('called create')
     for (let i = 0; i < 5; i++) {
 
         window.localStorage.setItem(''+i, ''+5);
