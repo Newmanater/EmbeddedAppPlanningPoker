@@ -31,11 +31,12 @@ function handleGetUser() {
 function handleCreateResults() {
 
     log('called create')
-    for (let i = 0; i < 5; i++) {
 
-        window.localStorage.setItem(''+i, ''+5);
-        log('Set Value:' + i);
-    }
+    window.localStorage.setItem('a', '5');
+    window.localStorage.setItem('b', '10');
+    window.localStorage.setItem('c', '15');
+    window.localStorage.setItem('d', '35');
+    window.localStorage.setItem('e', '25');
 }
 
 function handleSetShare() {
