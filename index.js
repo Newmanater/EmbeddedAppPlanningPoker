@@ -18,13 +18,13 @@ app.onReady().then(() => {
 
 function extractResults(item, index) {
 
-    var vote = window.localStorage.getItem(item)
+    var vote = app.localStorage.getItem(item)
     log('vote' + index + ':',  vote);
 }
 
 function handleGetUser() {
-    log('localStorage', window.localStorage)
-    window.localStorage.forEach(extractResults)
+    log('localStorage', app.localStorage)
+    app.localStorage.forEach(extractResults)
 }
 
 
@@ -32,11 +32,11 @@ function handleCreateResults() {
 
     log('called create')
 
-    window.localStorage.setItem('a', '5');
-    window.localStorage.setItem('b', '10');
-    window.localStorage.setItem('c', '15');
-    window.localStorage.setItem('d', '35');
-    window.localStorage.setItem('e', '25');
+    app.localStorage.setItem('a', '5');
+    app.localStorage.setItem('b', '10');
+    app.localStorage.setItem('c', '15');
+    app.localStorage.setItem('d', '35');
+    app.localStorage.setItem('e', '25');
 }
 
 function handleSetShare() {
