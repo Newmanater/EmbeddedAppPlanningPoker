@@ -16,51 +16,17 @@ app.onReady().then(() => {
     })
 });
 
+function extractResults(item, index) {
 
-function getInputValue() {
-    let myValue = document.getElementById("userField").value;
-    return myValue;
-}
-
-function getUserVaule(keyName){
-    const myStorage = window.localStorage.getItem(keyName);
-    return myStorage;
-}
-
-function setUserVaule(key, value){
-    window.localStorage.setItem(key,value);
+    var vote = app.localStorage.getItem(item)
+    log('vote' + index + ':',  vote);
 }
 
 function handleGetUser() {
-    app.context.getUser().then((u) => {
-        log('getUser()', u);
 
-
-        var input = getInputValue();
-        setUserVaule(u.id, input)
-        log('setValue', u.id, input);
-
-        log('getValue()',  window.localStorage);
-    }).catch((error) => {
-        log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
-    })
+    app.localStorage.forEach(extractResults)
 }
 
-function handleGetMeeting() {
-    app.context.getMeeting().then((m) => {
-        log('getMeeting()', m);
-    }).catch((error) => {
-        log('getMeeting() promise failed with error', Webex.Application.ErrorCodes[error]);
-    });
-}
-
-function handleGetSpace() {
-    app.context.getSpace().then((s) => {
-        log('getSpace()', s);
-    }).catch((error) => {
-        log('getSpace() promise failed with error', Webex.Application.ErrorCodes[error]);
-    });
-}
 
 function handleSetShare() {
     if (app.isShared) {

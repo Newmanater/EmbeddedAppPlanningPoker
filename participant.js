@@ -12,33 +12,32 @@ app.onReady().then(() => {
   })
 });
 
+function getInputValue() {
+  let myValue = document.getElementById("userField").value;
+  return myValue;
+}
+
+function getUserVaule(keyName){
+  const myStorage = window.localStorage.getItem(keyName);
+  return myStorage;
+}
+
+function setUserVaule(key, value){
+  window.localStorage.setItem(key,value);
+}
+
 function handleGetUser() {
   app.context.getUser().then((u) => {
     log('getUser()', u);
+
+    var input = getInputValue();
+    setUserVaule(u.id, input)
+
   }).catch((error) => {
     log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
   })
 }
 
-function handleGetMeeting() {
-  app.context.getMeeting().then((m) => {
-    log('getMeeting()', m);
-  }).catch((error) => {
-    log('getMeeting() promise failed with error', Webex.Application.ErrorCodes[error]);
-  });
-}
-
-function handleGetSpace() {
-  app.context.getSpace().then((s) => {
-    log('getSpace()', s);
-  }).catch((error) => {
-    log('getSpace() promise failed with error', Webex.Application.ErrorCodes[error]);
-  });
-}
-
-function handleDisplayAppInfo() {
-  log('Display Application', app);
-}
 
 function log(type, data) {
   var ul = document.getElementById("console");
