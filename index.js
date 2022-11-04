@@ -47,8 +47,15 @@ function handleGetUser() {
 
 function extractResults(item, index) {
 
-    var vote = window.localStorage.getItem(item)
-    log('vote' + index + ':',  vote);
+    app.context.getUser().then((u) => {
+        log('getUser()', u);
+
+        var vote = window.localStorage.getItem(item)
+        log('vote' + index + ':',  vote);
+
+    }).catch((error) => {
+        log('getUser() promise failed with error', Webex.Application.ErrorCodes[error]);
+    })
 }
 
 function handleGetUser() {
