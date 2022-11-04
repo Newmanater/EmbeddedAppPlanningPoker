@@ -58,7 +58,7 @@ function extractResults(item, index) {
     })
 }
 
-function handleGetUser() {
+function handleShowResults() {
     log('localStorage', window.localStorage)
     window.localStorage.forEach(extractResults)
 }
